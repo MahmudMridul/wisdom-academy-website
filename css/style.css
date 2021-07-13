@@ -1,0 +1,11 @@
+.nav-height
+{
+  height: 70px;
+  font-size: 18px;
+}
+
+.nav-hov:hover
+{
+  background: #036bfc;
+  border-radius: 10px;
+}
