@@ -1,8 +1,40 @@
-.nav-height
+body
 {
-  font-size: 18px;
+  height: 4000px;
 }
 
+.mother
+{
+  width: 100%;
+}
+
+.progress-bar
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 5px;
+	width: 0%;
+	background: #0080ff;
+	border-radius: 3px;
+	z-index: 1;
+}
+
+.nav-height
+{
+  height: 70px;
+  font-size: 18px;
+  z-index: 0;
+}
+
+@media(max-width: 990px)
+{
+  .nav-height
+  {
+    height: auto;
+    font-size: 18px;
+  }
+}
 .nav-hov:hover
 {
   background: #036bfc;
