@@ -1,10 +1,13 @@
 body
 {
-  height: 4000px;
+  margin: 0;
 }
 
 .mother
 {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  margin-top: 85px;
   width: 100%;
 }
 
@@ -22,9 +25,45 @@ body
 
 .nav-height
 {
-  height: 70px;
+  height: 85px;
   font-size: 18px;
   z-index: 0;
+}
+
+.nav-hov:hover
+{
+  background: #036bfc;
+  border-radius: 10px;
+}
+
+.welcome-text
+{
+  grid-row: 2 / 3;
+  font-size: 60px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.quote
+{
+  grid-row: 3 / 4;
+  font-size: 20px;
+  text-align: center;
+}
+
+.foot
+{
+  grid-row: 4 / 5;
+  background: #001a33;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+}
+
+.footlink
+{
+  text-decoration: none;
+  color: white;
 }
 
 @media(max-width: 990px)
@@ -34,9 +73,27 @@ body
     height: auto;
     font-size: 18px;
   }
+
+  .mother
+  {
+    margin-top: 56px;
+  }
 }
-.nav-hov:hover
+
+@media(max-width: 500px)
 {
-  background: #036bfc;
-  border-radius: 10px;
+  .welcome-text
+  {
+    font-size: 25px;
+  }
+
+  .quote
+  {
+    font-size: 18px;
+  }
+
+  .foot
+  {
+    font-size: 18px;
+  }
 }
