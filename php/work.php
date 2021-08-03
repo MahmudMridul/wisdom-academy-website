@@ -2,13 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Work</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
     crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/team-core.css">
+    <link rel="stylesheet" href="../css/work.css">
 
   </head>
   <body>
@@ -42,7 +43,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link nav-hov" href="work.php">Our Work</a>
+              <a class="nav-link nav-hov" href="work.php>">Our Work</a>
             </li>
 
             <li class="nav-item">
@@ -100,10 +101,10 @@
       <?php
         require("connect.php");
 
-        $query = "SELECT * FROM team WHERE category = 'core'";
+        $query = "SELECT directory FROM work";
         $result = mysqli_query($connection, $query);
 
-        echo "<div class = 'core'> Core Members </div>";
+        echo "<div class = 'work'> Our Works </div>";
 
         if(mysqli_num_rows($result) > 0)
         {
@@ -122,6 +123,5 @@
       crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="../js/first.js"></script>
-
   </body>
 </html>

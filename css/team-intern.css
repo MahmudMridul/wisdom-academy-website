@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+*
+{
+  font-family: "Poppins", sans-serif;
+}
+
+.my-container
+{
+  display: grid;
+  grid-template: 1fr / repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 15px;
+  margin-top: 85px;
+}
+
+.images
+{
+  width: 300px;
+  height: 350px;
+}
+
+.images:hover
+{
+  box-shadow: 6px 6px 12px;
+}
+
+.intern
+{
+  font-size: 50px;
+  font-weight: 700;
+  grid-column: 1 / -1;
+}
+
+.other_header
+{
+  font-size: 40px;
+  font-weight: 700;
+  grid-column: 1 / -1;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  text-align: center;
+}

@@ -2,18 +2,17 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
     crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/team-core.css">
+    <link rel="stylesheet" href="../css/student-login.css">
 
+    <title>Student-login</title>
   </head>
   <body>
-
-    <div class="progress-bar" id="scrollBar"></div>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark nav-height">
 
@@ -96,26 +95,36 @@
 
     </nav>
 
-    <div class="my-container">
-      <?php
-        require("connect.php");
+    <div class="my-grid">
 
-        $query = "SELECT * FROM team WHERE category = 'core'";
-        $result = mysqli_query($connection, $query);
+      <div class="center">
 
-        echo "<div class = 'core'> Core Members </div>";
+        <h1>Student Login</h1>
 
-        if(mysqli_num_rows($result) > 0)
-        {
-            while($row = mysqli_fetch_assoc($result))
-            {
-                echo "<img src=" . "'" . $row['directory']. "'"  ." class='images'>";
-            }
-        }
+        <form class="box" action="index.html" method="post">
 
-        mysqli_close($connection);
-      ?>
+          <div class="txt_field">
+            <input type="text" required>
+            <span></span>
+            <label>Username</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="password" required>
+            <span></span>
+            <label>Password</label>
+          </div>
+
+          <input type="submit" value="Login">
+
+        </form>
+
+      </div>
+
     </div>
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
