@@ -53,8 +53,10 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-      if(mysqli_num_rows($result) > 0)
+      if(mysqli_num_rows($result) == 1)
       {
+        session_start();
+        $_SESSION["username"] = $username;
         header("Location: admin-page.php");
       }
       else
@@ -62,7 +64,6 @@
         echo "<script> alert('Wrong username or password'); window.location = 'admin-login.php'; </script>";
       }
     }
-
 
     ?>
 
