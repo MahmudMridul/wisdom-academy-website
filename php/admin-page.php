@@ -204,17 +204,19 @@
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-news']))
         {
           $news_id = $_REQUEST["news-id"];
-          $news_id = intval($news_id);
-          $query = "DELETE FROM news WHERE id = {$news_id}";
+
+          $query = "SELECT * FROM news WHERE id = {$news_id}";
           $result = mysqli_query($connection, $query);
 
-          if($result)
+          if(mysqli_num_rows($result) == 1)
           {
+            $query = "DELETE FROM news WHERE id = {$news_id}";
+            $result = mysqli_query($connection, $query);
             echo "<script> alert('News Deleted successfully!'); window.location = 'admin-page.php'; </script>";
           }
           else
           {
-            echo "<script> alert('Something went wrong while deleting news!'); window.location = 'admin-page.php'; </script>";
+            echo "<script> alert('The ID provided does not exist!'); window.location = 'admin-page.php'; </script>";
           }
         }
         mysqli_close($connection);
