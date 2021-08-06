@@ -100,7 +100,7 @@
       <?php
         require("connect.php");
 
-        $query = "SELECT * FROM team WHERE category = 'core'";
+        $query = "SELECT * FROM team WHERE category = 'member_core'";
         $result = mysqli_query($connection, $query);
 
         echo "<div class = 'core'> Core Members </div>";

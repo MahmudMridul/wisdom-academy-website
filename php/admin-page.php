@@ -11,18 +11,23 @@
   </head>
 
   <body>
+
+    <!-- SESSION START  -->
     <?php session_start(); ?>
 
+    <!-- HEADER OF THE PAGE  -->
     <div class="header">
 
       <div class="panel">
         Admin Panel
       </div>
 
+      <!-- GETTING THE CURRENT USER'S USERNAME  -->
       <div class="curr-user">
         <?php echo "User: " . $_SESSION["username"]; ?>
       </div>
 
+      <!-- LOGOUT BUTTON  -->
       <div class="logout">
 
         <form class=""  method="post">
@@ -31,6 +36,7 @@
 
       </div>
 
+      <!-- LOGOUT PHP CODE  -->
       <?php
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['logout']))
         {
@@ -41,6 +47,7 @@
 
     </div>
 
+    <!-- THE SIDE MENU  -->
     <div class="side-menu">
       <ul>
 
@@ -75,8 +82,10 @@
       </ul>
     </div>
 
+    <!-- THE CONTAINER THAT HOLDS EACH SECTION OF THE PAGE  -->
     <div class="container">
 
+      <!-- PASSWORD CHANGE SECTION FOR ADMIN  -->
       <div class="admin-info" id="admin-info">
         <h2>Change Password</h2>
         <form class="" action="" method="post">
@@ -95,6 +104,7 @@
         </form>
       </div>
 
+      <!-- PASSWORD CHANGE PHP CODE  -->
       <?php
         require("connect.php");
 
@@ -131,6 +141,7 @@
 
       ?>
 
+      <!-- EXAM SECTION  -->
       <div class="exam" id="exam">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -141,6 +152,7 @@
         est laborum.
       </div>
 
+      <!-- STUDENT SECTION  -->
       <div class="student" id="student">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -151,25 +163,28 @@
         est laborum.
       </div>
 
+      <!-- HOME SECTION  -->
       <div class="home" id="home">
 
       </div>
 
+      <!-- NEWS SECTION  -->
       <div class="news" id="news">
 
-        <h2>Delete News Contents</h2>
+        <!-- REMOVE NEWS CONTENTS FORM  -->
+        <h2>Remove News Contents</h2>
 
         <form class="" action="" method="post">
 
           <label> Select News ID: </label>
           <input type="number" name="news-id" value="" required><br>
-          <input type="submit" name="delete-news" value="Delete">
+          <input type="submit" name="delete-news" value="Remove">
 
         </form>
 
         <h2>News Contents</h2>
 
-
+        <!-- SHOWING ALL NEWS CONTENTS CURRENTLY IN DISPLAY PHP CODE  -->
       <?php
         require("connect.php");
 
@@ -197,6 +212,7 @@
         mysqli_close($connection);
       ?>
 
+      <!-- REMOVE NEWS CONTENTS PHP CODE  -->
       <?php
         require("connect.php");
 
@@ -212,13 +228,12 @@
           $directory = "../image/news/";
           $filename = $name . "." . $extension;
 
-          chdir($directory);
-          unlink($filename);
-
           if(mysqli_num_rows($result) == 1)
           {
             $query = "DELETE FROM news WHERE id = {$news_id}";
             $result = mysqli_query($connection, $query);
+            chdir($directory);
+            unlink($filename);
             echo "<script> alert('News Deleted successfully!'); window.location = 'admin-page.php'; </script>";
           }
           else
@@ -229,6 +244,7 @@
         mysqli_close($connection);
       ?>
 
+      <!-- UPLOAD NEWS CONTENTS FORM  -->
       <h2>Upload News Contents</h2>
 
       <form class="" action="" method="post" enctype="multipart/form-data">
@@ -239,6 +255,7 @@
 
       </form>
 
+      <!-- UPLOAD NEWS CONTENTS PHP CODE  -->
       <?php
         require("connect.php");
 
@@ -299,20 +316,23 @@
 
       </div>
 
+      <!-- TEAM SECTION -->
       <div class="team" id="team">
 
-        <h2>Delete a Member</h2>
+        <h2>Remove a Member</h2>
 
+        <!-- REMOVE TEAM MEMBER FORM  -->
         <form class="" action="" method="post">
 
           <label> Select Member ID: </label>
           <input type="number" name="member_id" value="" required><br>
-          <input type="submit" name="delete_member" value="Delete">
+          <input type="submit" name="delete_member" value="Remove">
 
         </form>
 
         <h2>Team Members</h2>
 
+        <!-- SHOWING ALL TEAM MEMBER CURRENTLY IN DISPLAY PHP CODE  -->
         <?php
         require("connect.php");
 
@@ -323,7 +343,151 @@
         {
           echo "<table>";
           echo "<thead>";
-          echo "<tr> <th> Name </th> <th> News ID </th>  </tr>";
+          echo "<tr> <th> Name </th> <th> Member ID </th> <th> Category </th>  </tr>";
+          echo "</thead>";
+          echo "<tbody>";
+          while($row = mysqli_fetch_assoc($result))
+          {
+              echo "<tr> <td>" . $row["name"] . "</td> <td> " . $row["id"] . "</td> <td> " . $row["category"] . " </td> </tr>";
+          }
+          echo "</tbody>";
+          echo "</table>";
+        }
+        else
+        {
+          echo "<h2> No member found </h2>";
+        }
+        mysqli_close($connection);
+      ?>
+
+      <!-- REMOVE A TEAM MEMBER PHP CODE  -->
+      <?php
+        require("connect.php");
+
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_member']))
+        {
+          $member_id = $_REQUEST["member_id"];
+
+          $query = "SELECT * FROM team WHERE id = {$member_id}";
+          $result = mysqli_query($connection, $query);
+          $row = mysqli_fetch_assoc($result);
+          $name = $row["name"];
+          $extension = $row["extension"];
+          $directory = "../image/team/";
+          $filename = $name . "." . $extension;
+
+          if(mysqli_num_rows($result) == 1)
+          {
+            $query = "DELETE FROM team WHERE id = {$member_id}";
+            $result = mysqli_query($connection, $query);
+            chdir($directory);
+            unlink($filename);
+            echo "<script> alert('Member removed successfully!'); window.location = 'admin-page.php'; </script>";
+          }
+          else
+          {
+            echo "<script> alert('The ID provided does not exist!'); window.location = 'admin-page.php'; </script>";
+          }
+        }
+        mysqli_close($connection);
+      ?>
+
+
+      <!-- UPLOAD TEAM MEMBER FORM  -->
+      <h2>Upload Team Member Image</h2>
+
+      <form class="" action="" method="post" enctype="multipart/form-data">
+
+        <label> Image File: </label>
+        <input type="file" name="member_upload[]" value="" multiple required><br>
+        <label> Category: </label>
+        <select class="" name="member_category">
+          <option value="none">None</option>
+          <option value="member_core">Core</option>
+          <option value="intern_business_development">Business Development (Intern)</option>
+          <option value="intern_content_writing">Content Writing (Intern)</option>
+          <option value="intern_graphics">Graphics (Intern)</option>
+          <option value="intern_marketing">Marketing (Intern)</option>
+          <option value="intern_public_relation">Public Relation (Intern)</option>
+          <option value="intern_research">Research (Intern)</option>
+          <option value="intern_web_development">Web Development (Intern)</option>
+        </select>
+        <input type="submit" name="member_upload_button" value="Upload">
+
+      </form>
+
+      <!-- UPLOAD NEWS CONTENTS PHP CODE  -->
+      <?php
+        require("connect.php");
+
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['member_upload_button']))
+        {
+          if(isset($_FILES['member_upload']))
+          {
+            $category = $_REQUEST["member_category"];
+            $file_array = reArrayFiles($_FILES['member_upload']);
+
+            for($i = 0; $i < count($file_array); ++$i)
+            {
+              if($file_array[$i]['error'])
+              {
+                echo "<script> alert('Something went wrong while uploading!'); window.location = 'admin-page.php'; </script>";
+              }
+              else
+              {
+                $extensions = array('jpg', 'jpeg', 'png');
+                $file_extension = explode('.', $file_array[$i]['name']);
+                $name = $file_extension[0];
+                $file_extension = end($file_extension);
+
+                if(!in_array($file_extension, $extensions))
+                {
+                  echo "<script> alert('Invalid file extension!'); window.location = 'admin-page.php'; </script>";
+                }
+                else
+                {
+                  $directory = "../image/team/" . $file_array[$i]['name'];
+                  move_uploaded_file($file_array[$i]['tmp_name'], $directory);
+
+                  $query = "INSERT INTO team(name, directory, category, extension) VALUES ('$name','$directory', '$category', '$file_extension')";
+                  $result = mysqli_query($connection, $query);
+                  echo "<script> alert('File uploaded successfully!'); window.location = 'admin-page.php'; </script>";
+                }
+              }
+            }
+          }
+        }
+        mysqli_close($connection);
+      ?>
+      </div>
+
+      <div class="work" id="work">
+
+        <!-- REMOVE WORK CONTENTS FORM  -->
+        <h2>Remove Work Contents</h2>
+
+        <form class="" action="" method="post">
+
+          <label> Select News ID: </label>
+          <input type="number" name="work_id" value="" required><br>
+          <input type="submit" name="delete_work" value="Remove">
+
+        </form>
+
+        <h2>Work Contents</h2>
+
+        <!-- SHOWING ALL WORK CONTENTS CURRENTLY IN DISPLAY PHP CODE  -->
+      <?php
+        require("connect.php");
+
+        $query = "SELECT name, id FROM work";
+        $result = mysqli_query($connection, $query);
+
+        if(mysqli_num_rows($result) >= 1)
+        {
+          echo "<table>";
+          echo "<thead>";
+          echo "<tr> <th> Name </th> <th> Work ID </th>  </tr>";
           echo "</thead>";
           echo "<tbody>";
           while($row = mysqli_fetch_assoc($result))
@@ -335,21 +499,98 @@
         }
         else
         {
-          echo "<h2> No news found </h2>";
+          echo "<h2> No work found </h2>";
         }
         mysqli_close($connection);
       ?>
 
-      </div>
+      <!-- REMOVE WORK CONTENTS PHP CODE  -->
+      <?php
+        require("connect.php");
 
-      <div class="work" id="work">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-        est laborum.
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_work']))
+        {
+          $work_id = $_REQUEST["work_id"];
+
+          $query = "SELECT * FROM work WHERE id = {$work_id}";
+          $result = mysqli_query($connection, $query);
+          $row = mysqli_fetch_assoc($result);
+          $name = $row["name"];
+          $extension = $row["extension"];
+          $directory = "../image/work/";
+          $filename = $name . "." . $extension;
+
+          if(mysqli_num_rows($result) == 1)
+          {
+            $query = "DELETE FROM work WHERE id = {$work_id}";
+            $result = mysqli_query($connection, $query);
+            chdir($directory);
+            unlink($filename);
+            echo "<script> alert('Work Deleted successfully!'); window.location = 'admin-page.php'; </script>";
+          }
+          else
+          {
+            echo "<script> alert('The ID provided does not exist!'); window.location = 'admin-page.php'; </script>";
+          }
+        }
+        mysqli_close($connection);
+      ?>
+
+      <!-- UPLOAD WORK CONTENTS FORM  -->
+      <h2>Upload Work Contents</h2>
+
+      <form class="" action="" method="post" enctype="multipart/form-data">
+
+        <label> Image File: </label>
+        <input type="file" name="work_upload[]" value="" multiple required><br>
+        <input type="submit" name="work_upload_button" value="Upload">
+
+      </form>
+
+      <!-- UPLOAD WORK CONTENTS PHP CODE  -->
+      <?php
+        require("connect.php");
+
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['work_upload_button']))
+        {
+          if(isset($_FILES['work_upload']))
+          {
+            $file_array = reArrayFiles($_FILES['work_upload']);
+
+            for($i = 0; $i < count($file_array); ++$i)
+            {
+              if($file_array[$i]['error'])
+              {
+                echo "<script> alert('Something went wrong while uploading!'); window.location = 'admin-page.php'; </script>";
+              }
+              else
+              {
+                $extensions = array('jpg', 'jpeg', 'png');
+                $file_extension = explode('.', $file_array[$i]['name']);
+                $name = $file_extension[0];
+                $file_extension = end($file_extension);
+
+                if(!in_array($file_extension, $extensions))
+                {
+                  echo "<script> alert('Invalid file extension!'); window.location = 'admin-page.php'; </script>";
+                }
+                else
+                {
+                  $directory = "../image/work/" . $file_array[$i]['name'];
+                  move_uploaded_file($file_array[$i]['tmp_name'], $directory);
+
+                  $query = "INSERT INTO work(name, directory, extension) VALUES ('$name','$directory', '$file_extension')";
+                  $result = mysqli_query($connection, $query);
+                  echo "<script> alert('File uploaded successfully!'); window.location = 'admin-page.php'; </script>";
+                }
+              }
+            }
+          }
+        }
+
+        mysqli_close($connection);
+      ?>
+
       </div>
 
     </div>
