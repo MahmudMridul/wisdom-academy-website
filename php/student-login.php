@@ -18,7 +18,7 @@
 
       <div class="container-fluid">
 
-        <a class="navbar-brand" href="../index.html">Wisdom Academy</a>
+        <a class="navbar-brand" href="../index.php">Wisdom Academy</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarNav" aria-controls="navbarNav"
@@ -33,7 +33,7 @@
           <ul class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link nav-hov" aria-current="page" href="../index.html">Home</a>
+              <a class="nav-link nav-hov" aria-current="page" href="../index.php">Home</a>
             </li>
 
             <li class="nav-item">
@@ -73,9 +73,8 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Registration</a></li>
+                  <li><a class="dropdown-item" href="#">Student Registration</a></li>
                   <li><a class="dropdown-item" href="student-login.php">Student Login</a></li>
-                  <li><a class="dropdown-item" href="#">Exam</a></li>
                 </ul>
               </div>
 
@@ -97,29 +96,29 @@
 
     <div class="my-grid">
 
-      <div class="center">
-
-        <h1>Student Login</h1>
-
-        <form class="box" action="index.html" method="post">
-
-          <div class="txt_field">
-            <input type="text" required>
-            <span></span>
-            <label>Username</label>
-          </div>
-
-          <div class="txt_field">
-            <input type="password" required>
-            <span></span>
-            <label>Password</label>
-          </div>
-
-          <input type="submit" value="Login">
-
-        </form>
-
+      <div class="login_header">
+          <h1>Student Login</h1>
       </div>
+
+        <div class="login_form">
+          <form class="box" action="index.php" method="post">
+
+            <div class="txt_field">
+              <input type="text" required>
+              <span></span>
+              <label>Username</label>
+            </div>
+
+            <div class="txt_field">
+              <input type="password" required>
+              <span></span>
+              <label>Password</label>
+            </div>
+
+            <input type="submit" value="Login">
+
+          </form>
+        </div>
 
     </div>
 
@@ -130,7 +129,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="../js/first.js"></script>
 
   </body>
 </html>
