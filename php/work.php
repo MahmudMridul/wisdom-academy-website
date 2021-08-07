@@ -20,7 +20,7 @@
 
       <div class="container-fluid">
 
-        <a class="navbar-brand" href="../index.html">Wisdom Academy</a>
+        <a class="navbar-brand" href="../index.php">Wisdom Academy</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarNav" aria-controls="navbarNav"
@@ -35,7 +35,7 @@
           <ul class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link nav-hov" aria-current="page" href="../index.html">Home</a>
+              <a class="nav-link nav-hov" aria-current="page" href="../index.php">Home</a>
             </li>
 
             <li class="nav-item">
@@ -75,9 +75,8 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Registration</a></li>
+                  <li><a class="dropdown-item" href="#">Student Registration</a></li>
                   <li><a class="dropdown-item" href="student-login.php">Student Login</a></li>
-                  <li><a class="dropdown-item" href="#">Exam</a></li>
                 </ul>
               </div>
 
