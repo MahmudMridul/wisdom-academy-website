@@ -6,7 +6,13 @@
     <link rel="stylesheet" href="../css/admin-login.css">
   </head>
   <body>
-
+    <?php
+      session_start();
+      if(array_key_exists("visited", $_SESSION))
+      {
+        session_destroy();
+      }
+    ?>
     <div class="header">
       Admin Login
     </div>
@@ -37,7 +43,7 @@
 
     </div>
 
-    <a href="../index.html">
+    <a href="../index.php">
       <img src="../image/icon/exit.png" alt="">
     </a>
 

@@ -13,7 +13,14 @@
   <body>
 
     <!-- SESSION START  -->
-    <?php session_start(); ?>
+    <?php
+      session_start();
+      if(!array_key_exists('username',$_SESSION) && empty($_SESSION['username']))
+      {
+        echo "<script> alert('You have to be logged in to visit this page'); window.location = 'admin-login.php'; </script>";
+        die();
+      }
+    ?>
 
     <!-- HEADER OF THE PAGE  -->
     <div class="header">
@@ -24,7 +31,7 @@
 
       <!-- GETTING THE CURRENT USER'S USERNAME  -->
       <div class="curr-user">
-        <?php echo "User: " . $_SESSION["username"]; ?>
+        <?php echo "User: " . $_SESSION["username"];  $_SESSION["visited"] = "yes"; ?>
       </div>
 
       <!-- LOGOUT BUTTON  -->
@@ -166,6 +173,262 @@
       <!-- HOME SECTION  -->
       <div class="home" id="home">
 
+          <!-- REMOVE CURRENT EVENT CONTENTS FORM  -->
+          <h2>Remove Cuurent Event</h2>
+
+          <form class="" action="" method="post">
+
+            <label> Select News ID: </label>
+            <input type="number" name="current_event_id" value="" required><br>
+            <input type="submit" name="delete_current_event" value="Remove">
+
+          </form>
+
+          <h2>Current Events</h2>
+
+          <!-- SHOWING ALL CURRRENT EVNETS CURRENTLY IN DISPLAY PHP CODE  -->
+          <?php
+          require("connect.php");
+
+          $query = "SELECT name, id FROM current_event";
+          $result = mysqli_query($connection, $query);
+
+          if(mysqli_num_rows($result) >= 1)
+          {
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr> <th> Event </th> <th> Event ID </th>  </tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            while($row = mysqli_fetch_assoc($result))
+            {
+                echo "<tr> <td>" . $row["name"] . "</td> <td> " . $row["id"] . "</td> </tr>";
+            }
+            echo "</tbody>";
+            echo "</table>";
+          }
+          else
+          {
+            echo "<h2> No event found </h2>";
+          }
+          mysqli_close($connection);
+          ?>
+
+        <!-- REMOVE CURRENT EVENT PHP CODE  -->
+          <?php
+          require("connect.php");
+
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_current_event']))
+          {
+            $current_event_id = $_REQUEST["current_event_id"];
+
+            $query = "SELECT * FROM current_event WHERE id = {$current_event_id}";
+            $result = mysqli_query($connection, $query);
+
+            if(mysqli_num_rows($result) == 1)
+            {
+              $row = mysqli_fetch_assoc($result);
+              $name = $row["name"];
+              $extension = $row["extension"];
+              $directory = "../image/current_event/";
+              $filename = $name . "." . $extension;
+
+              $query = "DELETE FROM current_event WHERE id = {$current_event_id}";
+              $result = mysqli_query($connection, $query);
+              chdir($directory);
+              unlink($filename);
+              echo "<script> alert('Event removed successfully!'); window.location = 'admin-page.php'; </script>";
+            }
+            else
+            {
+              echo "<script> alert('The ID provided does not exist!'); window.location = 'admin-page.php'; </script>";
+            }
+          }
+          mysqli_close($connection);
+          ?>
+
+        <!-- UPLOAD CURRENT EVENT CONTENTS FORM  -->
+          <h2>Upload Current Event</h2>
+
+          <form class="" action="" method="post" enctype="multipart/form-data">
+
+          <label> Image File: </label>
+          <input type="file" name="current_event_upload[]" value="" multiple required><br>
+          <input type="submit" name="upload_current_event" value="Upload">
+
+          </form>
+
+        <!-- UPLOAD NEWS CONTENTS PHP CODE  -->
+          <?php
+          require("connect.php");
+
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['upload_current_event']))
+          {
+            if(isset($_FILES['current_event_upload']))
+            {
+              $file_array = reArrayFiles($_FILES['current_event_upload']);
+
+              for($i = 0; $i < count($file_array); ++$i)
+              {
+                if($file_array[$i]['error'])
+                {
+                  echo "<script> alert('Something went wrong while uploading!'); window.location = 'admin-page.php'; </script>";
+                }
+                else
+                {
+                  $extensions = array('jpg', 'jpeg', 'png');
+                  $file_extension = explode('.', $file_array[$i]['name']);
+                  $name = $file_extension[0];
+                  $file_extension = end($file_extension);
+
+                  if(!in_array($file_extension, $extensions))
+                  {
+                    echo "<script> alert('Invalid file extension!'); window.location = 'admin-page.php'; </script>";
+                  }
+                  else
+                  {
+                    $directory = "../image/current_event/" . $file_array[$i]['name'];
+                    move_uploaded_file($file_array[$i]['tmp_name'], $directory);
+
+                    $query = "INSERT INTO current_event(name, directory, extension) VALUES ('$name','$directory', '$file_extension')";
+                    $result = mysqli_query($connection, $query);
+                    echo "<script> alert('File uploaded successfully!'); window.location = 'admin-page.php'; </script>";
+                  }
+                }
+              }
+            }
+          }
+          mysqli_close($connection);
+          ?>
+
+          <!-- REMOVE UPCOMING EVENT CONTENTS FORM  -->
+          <h2>Remove Upcoming Event</h2>
+
+          <form class="" action="" method="post">
+
+            <label> Select News ID: </label>
+            <input type="number" name="upcoming_event_id" value="" required><br>
+            <input type="submit" name="delete_upcoming_event" value="Remove">
+
+          </form>
+
+          <h2>Upcoming Events</h2>
+
+          <!-- SHOWING ALL UPCOMING EVNETS CURRENTLY IN DISPLAY PHP CODE  -->
+          <?php
+          require("connect.php");
+
+          $query = "SELECT name, id FROM upcoming_event";
+          $result = mysqli_query($connection, $query);
+
+          if(mysqli_num_rows($result) >= 1)
+          {
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr> <th> Event </th> <th> Event ID </th>  </tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            while($row = mysqli_fetch_assoc($result))
+            {
+                echo "<tr> <td>" . $row["name"] . "</td> <td> " . $row["id"] . "</td> </tr>";
+            }
+            echo "</tbody>";
+            echo "</table>";
+          }
+          else
+          {
+            echo "<h2> No event found </h2>";
+          }
+          mysqli_close($connection);
+          ?>
+
+        <!-- REMOVE UPCOMING EVENT PHP CODE  -->
+          <?php
+          require("connect.php");
+
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_upcoming_event']))
+          {
+            $upcoming_event_id = $_REQUEST["current_event_id"];
+
+            $query = "SELECT * FROM upcoming_event WHERE id = {$upcoming_event_id}";
+            $result = mysqli_query($connection, $query);
+
+            if(mysqli_num_rows($result) == 1)
+            {
+              $row = mysqli_fetch_assoc($result);
+              $name = $row["name"];
+              $extension = $row["extension"];
+              $directory = "../image/upcoming_event/";
+              $filename = $name . "." . $extension;
+
+              $query = "DELETE FROM current_event WHERE id = {$upcoming_event_id}";
+              $result = mysqli_query($connection, $query);
+              chdir($directory);
+              unlink($filename);
+              echo "<script> alert('Event removed successfully!'); window.location = 'admin-page.php'; </script>";
+            }
+            else
+            {
+              echo "<script> alert('The ID provided does not exist!'); window.location = 'admin-page.php'; </script>";
+            }
+          }
+          mysqli_close($connection);
+          ?>
+
+        <!-- UPLOAD UPCOMING EVENT CONTENTS FORM  -->
+          <h2>Upload Upcoming Event</h2>
+
+          <form class="" action="" method="post" enctype="multipart/form-data">
+
+          <label> Image File: </label>
+          <input type="file" name="upcoming_event_upload[]" value="" multiple required><br>
+          <input type="submit" name="upload_upcoming_event" value="Upload">
+
+          </form>
+
+        <!-- UPLOAD UPCOMING EVENT CONTENTS PHP CODE  -->
+          <?php
+          require("connect.php");
+
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['upload_upcoming_event']))
+          {
+            if(isset($_FILES['upcoming_event_upload']))
+            {
+              $file_array = reArrayFiles($_FILES['upcoming_event_upload']);
+
+              for($i = 0; $i < count($file_array); ++$i)
+              {
+                if($file_array[$i]['error'])
+                {
+                  echo "<script> alert('Something went wrong while uploading!'); window.location = 'admin-page.php'; </script>";
+                }
+                else
+                {
+                  $extensions = array('jpg', 'jpeg', 'png');
+                  $file_extension = explode('.', $file_array[$i]['name']);
+                  $name = $file_extension[0];
+                  $file_extension = end($file_extension);
+
+                  if(!in_array($file_extension, $extensions))
+                  {
+                    echo "<script> alert('Invalid file extension!'); window.location = 'admin-page.php'; </script>";
+                  }
+                  else
+                  {
+                    $directory = "../image/upcoming_event/" . $file_array[$i]['name'];
+                    move_uploaded_file($file_array[$i]['tmp_name'], $directory);
+
+                    $query = "INSERT INTO upcoming_event(name, directory, extension) VALUES ('$name','$directory', '$file_extension')";
+                    $result = mysqli_query($connection, $query);
+                    echo "<script> alert('File uploaded successfully!'); window.location = 'admin-page.php'; </script>";
+                  }
+                }
+              }
+            }
+          }
+          mysqli_close($connection);
+          ?>
+
       </div>
 
       <!-- NEWS SECTION  -->
@@ -185,7 +448,7 @@
         <h2>News Contents</h2>
 
         <!-- SHOWING ALL NEWS CONTENTS CURRENTLY IN DISPLAY PHP CODE  -->
-      <?php
+        <?php
         require("connect.php");
 
         $query = "SELECT name, id FROM news";
@@ -210,10 +473,10 @@
           echo "<h2> No news found </h2>";
         }
         mysqli_close($connection);
-      ?>
+        ?>
 
       <!-- REMOVE NEWS CONTENTS PHP CODE  -->
-      <?php
+        <?php
         require("connect.php");
 
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete-news']))
@@ -242,21 +505,21 @@
           }
         }
         mysqli_close($connection);
-      ?>
+        ?>
 
       <!-- UPLOAD NEWS CONTENTS FORM  -->
-      <h2>Upload News Contents</h2>
+        <h2>Upload News Contents</h2>
 
-      <form class="" action="" method="post" enctype="multipart/form-data">
+        <form class="" action="" method="post" enctype="multipart/form-data">
 
         <label> Image File: </label>
         <input type="file" name="news_upload[]" value="" multiple required><br>
         <input type="submit" name="news_upload_button" value="Upload">
 
-      </form>
+        </form>
 
       <!-- UPLOAD NEWS CONTENTS PHP CODE  -->
-      <?php
+        <?php
         require("connect.php");
 
         if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['news_upload_button']))
@@ -312,7 +575,7 @@
           return $file_ary;
         }
         mysqli_close($connection);
-      ?>
+        ?>
 
       </div>
 
