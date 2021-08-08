@@ -13,6 +13,13 @@
     <title>Student-login</title>
   </head>
   <body>
+    <?php
+      session_start();
+      if(array_key_exists("visited", $_SESSION))
+      {
+        session_destroy();
+      }
+    ?>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark nav-height">
 
@@ -73,7 +80,7 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Student Registration</a></li>
+                  <li><a class="dropdown-item" href="student-registration.php">Student Registration</a></li>
                   <li><a class="dropdown-item" href="student-login.php">Student Login</a></li>
                 </ul>
               </div>
@@ -101,19 +108,19 @@
       </div>
 
         <div class="login_form">
-          <form class="box" action="index.php" method="post">
+          <form class="box" action="" method="post">
 
             <div class="txt_field">
-              <input type="text" required>
-              <span></span>
-              <label>Username</label>
+              <label>Username</label> <br>
+              <input type="text" name="username" required>
             </div>
 
             <div class="txt_field">
-              <input type="password" required>
-              <span></span>
-              <label>Password</label>
+              <label>Password</label> <br>
+              <input type="password" name="password" required>
             </div>
+
+            <br>
 
             <input type="submit" value="Login">
 
@@ -122,7 +129,36 @@
 
     </div>
 
+    <?php
+    require("connect.php");
 
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+      $username = $_REQUEST["username"];
+      $password = $_REQUEST["password"];
+
+      $query = "SELECT * FROM student WHERE username = '{$username}' AND password = '{$password}'";
+      $result = mysqli_query($connection, $query);
+
+      if(mysqli_num_rows($result) == 1)
+      {
+        //session_start();
+        $_SESSION["username"] = $username;
+        header("Location: student-page.php");
+      }
+      else
+      {
+        echo "<script> alert('Wrong username or password'); window.location = 'student-login.php'; </script>";
+      }
+    }
+
+    function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+
+    ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
