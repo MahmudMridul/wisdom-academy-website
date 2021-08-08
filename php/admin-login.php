@@ -13,52 +13,54 @@
         session_destroy();
       }
     ?>
-    <div class="header">
-      Admin Login
+
+    <div class="my-grid">
+
+      <div class="login_header">
+          <h1>Admin Login</h1>
+      </div>
+
+      <div class="login_form">
+        <form class="box" action="" method="post">
+
+          <div class="txt_field">
+            <label>Username</label> <br>
+            <input type="text" name="username" required>
+          </div>
+
+          <div class="txt_field">
+            <label>Password</label> <br>
+            <input type="password" name="password" required>
+          </div>
+
+          <br>
+
+          <input type="submit" value="Login">
+
+        </form>
+      </div>
+
+      <a href="../index.php" class="exit">
+        <img src="../image/icon/exit.png" alt="">
+      </a>
+
     </div>
 
-    <hr><hr><hr>
 
-    <div class="center">
 
-      <h1>Login</h1>
-
-      <form class="box" action="" method="post">
-
-        <div class="txt_field">
-          <input type="text" name="username" required>
-          <span></span>
-          <label>Username</label>
-        </div>
-
-        <div class="txt_field">
-          <input type="password" name="password" required>
-          <span></span>
-          <label>Password</label>
-        </div>
-
-        <input type="submit" name="submit" value="Login">
-
-      </form>
-
-    </div>
-
-    <a href="../index.php">
-      <img src="../image/icon/exit.png" alt="">
-    </a>
 
     <?php
-    error_reporting(E_PARSE | E_ERROR);
     require("connect.php");
-
-    $username = $_REQUEST["username"];
-    $password = $_REQUEST["password"];
-
-    $query = "SELECT * FROM admin WHERE username = '{$username}' AND password = '{$password}'";
-    $result = mysqli_query($connection, $query);
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
+
+      $username = $_REQUEST["username"];
+      $password = $_REQUEST["password"];
+
+      $query = "SELECT * FROM admin WHERE username = '{$username}' AND password = '{$password}'";
+      $result = mysqli_query($connection, $query);
+
       if(mysqli_num_rows($result) == 1)
       {
         session_start();

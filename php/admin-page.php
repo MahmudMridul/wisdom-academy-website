@@ -63,10 +63,6 @@
         </li>
 
         <li>
-          <a href="#exam">Exam</a>
-        </li>
-
-        <li>
           <a href="#student">Student</a>
         </li>
 
@@ -94,6 +90,9 @@
 
       <!-- PASSWORD CHANGE SECTION FOR ADMIN  -->
       <div class="admin-info" id="admin-info">
+        <h1>Admin Information</h1>
+        <hr><hr>
+        
         <h2>Change Password</h2>
         <form class="" action="" method="post">
 
@@ -148,19 +147,10 @@
 
       ?>
 
-      <!-- EXAM SECTION  -->
-      <div class="exam" id="exam">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-        est laborum.
-      </div>
-
       <!-- STUDENT SECTION  -->
       <div class="student" id="student">
+        <h1>Student Information</h1>
+        <hr><hr>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -172,6 +162,8 @@
 
       <!-- HOME SECTION  -->
       <div class="home" id="home">
+        <h1>Home Page</h1>
+        <hr><hr>
 
           <!-- REMOVE CURRENT EVENT CONTENTS FORM  -->
           <h2>Remove Cuurent Event</h2>
@@ -434,6 +426,9 @@
       <!-- NEWS SECTION  -->
       <div class="news" id="news">
 
+        <h1>News Page</h1>
+        <hr><hr>
+
         <!-- REMOVE NEWS CONTENTS FORM  -->
         <h2>Remove News Contents</h2>
 
@@ -582,6 +577,9 @@
       <!-- TEAM SECTION -->
       <div class="team" id="team">
 
+        <h1>Team Information</h1>
+        <hr><hr>
+
         <h2>Remove a Member</h2>
 
         <!-- REMOVE TEAM MEMBER FORM  -->
@@ -725,7 +723,8 @@
       </div>
 
       <div class="work" id="work">
-
+        <h1>Work Page</h1>
+        <hr><hr>
         <!-- REMOVE WORK CONTENTS FORM  -->
         <h2>Remove Work Contents</h2>
 
