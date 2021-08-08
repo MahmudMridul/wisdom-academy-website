@@ -15,6 +15,7 @@ body
   grid-template: 1fr / 1fr;
   margin-top: 85px;
   width: 100%;
+  grid-row-gap: 120px;
 }
 
 .progress-bar
@@ -57,18 +58,57 @@ body
 
 .quote
 {
+  background: #EDF1FF;
   grid-row: 3 / 4;
   font-size: 20px;
   text-align: center;
 }
 
-.foot
+.current_event
 {
   grid-row: 4 / 5;
+  text-align: center;
+}
+
+.current_event_grid
+{
+  display: grid;
+  grid-template: 1fr / repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.images
+{
+  width: 300px;
+  height: 350px;
+}
+.images:hover
+{
+  box-shadow: 6px 6px 12px;
+}
+
+.upcoming_event
+{
+  grid-row: 5 / 6;
+  text-align: center;
+}
+
+.upcoming_event_grid
+{
+  display: grid;
+  grid-template: 1fr / repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+
+.foot
+{
+  grid-row: 6 / 7;
   background: #001a33;
   text-align: center;
   color: white;
   font-size: 25px;
+  line-height: 70px;
 }
 
 .footlink
