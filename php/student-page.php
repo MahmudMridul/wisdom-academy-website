@@ -55,11 +55,11 @@
       <ul>
 
         <li>
-          <a href="#admin-info" >Student Info</a>
+          <a href="#student-info" >Student Info</a>
         </li>
 
         <li>
-          <a href="#student">Settings</a>
+          <a href="#settings">Settings</a>
         </li>
 
       </ul>
