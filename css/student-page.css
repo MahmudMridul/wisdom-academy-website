@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+*
+{
+  font-family: "Poppins", sans-serif;
+}
+
+body
+{
+  margin: 0;
+}
+
+.header
+{
+  display: grid;
+  grid-template: 1fr / repeat(10, 1fr);
+  background: #282D3C;
+  color: #f2f2f2;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.panel
+{
+  grid-column: 1 / 3;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.curr-user
+{
+  grid-column: 7 / 9;
+  padding-top: 25px;
+  font-size: 20px;
+  text-align: center;
+}
+
+input
+{
+  grid-column: 9 / 11;
+  margin-top: 25px;
+  font-size: 20px;
+  text-align: center;
+}
+
+ul
+{
+  list-style: none;
+}
+
+a
+{
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+h1
+{
+  text-align: center;
+}
+
+.fb_link
+{
+  color: black;
+}
+
+
+.side-menu
+{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin-top: 100px;
+  background: #223A5E;
+  width: 180px;
+  height: 85vh;
+  font-size: 20px;
+  line-height: 80px;
+  border-radius: 3px;
+  border: 3px solid #578CA9;
+}
+
+.container
+{
+  display: grid;
+  grid-template: 1fr / 1fr;
+  margin-top: 100px;
+  margin-left: 185px;
+  grid-gap: 20px;
+}
+
+.student-info, .settings
+{
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border: 4px solid #009879;
+  border-radius: 8px;
+}
