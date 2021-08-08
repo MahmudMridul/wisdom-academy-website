@@ -92,7 +92,7 @@
       <div class="admin-info" id="admin-info">
         <h1>Admin Information</h1>
         <hr><hr>
-        
+
         <h2>Change Password</h2>
         <form class="" action="" method="post">
 
@@ -151,13 +151,149 @@
       <div class="student" id="student">
         <h1>Student Information</h1>
         <hr><hr>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-        est laborum.
+
+        <!-- showing all students information -->
+        <?php
+        require("connect.php");
+
+        $query = "SELECT * FROM student";
+        $result = mysqli_query($connection, $query);
+
+        if(mysqli_num_rows($result) >= 1)
+        {
+          echo "<table>";
+          echo "<thead>";
+          echo "<tr> <th> Name </th> <th> ID </th> <th> E-mail </th> <th> Facebook Account </th> <th> Username </th></tr>";
+          echo "</thead>";
+          echo "<tbody>";
+          while($row = mysqli_fetch_assoc($result))
+          {
+              echo "<tr> ";
+              echo "<td>" . $row["name"] . "</td>";
+              echo "<td> " . $row["id"] . "</td>";
+              echo "<td> " . $row["email"] . "</td>";
+              echo "<td> " . $row["fb"] . "</td>";
+              echo "<td> " . $row["username"] . "</td>";
+              echo "</tr>";
+          }
+          echo "</tbody>";
+          echo "</table>";
+        }
+        else
+        {
+          echo "<h2> No student found </h2>";
+        }
+        mysqli_close($connection);
+        ?>
+
+        <!-- change name of the student  -->
+        <h2>Name Correction</h2>
+        <form class="" action="" method="post">
+
+          <label> Unique ID: </label>
+          <input type="number" name="id" value="" required> <br><br>
+
+          <label> Name: </label>
+          <input type="text" name="name" value="" required> <br><br>
+
+          <input type="submit" name="corr_name" value="Update">
+
+        </form>
+
+        <?php
+          require("connect.php");
+
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['corr_name']))
+          {
+
+            $id = $_REQUEST["id"];
+            $name = $_REQUEST["name"];
+
+            if(preg_match("/^[a-zA-Z-' ]*$/", $name))
+            {
+              $query = "SELECT * FROM student WHERE id = '{$id}'";
+              $result = mysqli_query($connection, $query);
+
+              if(mysqli_num_rows($result) == 1)
+              {
+                $query = "UPDATE student SET name = '{$name}' WHERE id = '{$id}'";
+                $result = mysqli_query($connection, $query);
+
+                if($result)
+                {
+                  echo "<script> alert('Name changed successfully!'); window.location = 'admin-page.php'; </script>";
+                }
+                else
+                {
+                  echo "<script> alert('Something went wrong!'); window.location = 'admin-page.php'; </script>";
+                }
+              }
+              else
+              {
+                echo "<script> alert('ID provided doesn't exist'); window.location = 'admin-page.php'; </script>";
+              }
+            }
+            else
+            {
+              echo "<script> alert('Provide a valid name'); window.location = 'admin-page.php'; </script>";
+            }
+
+          }
+          mysqli_close($connection);
+        ?>
+
+        <br><br><br>
+
+        <!-- change username  -->
+        <h2>Change Username</h2>
+        <form class="" action="" method="post">
+
+          <label> Unique ID: </label>
+          <input type="number" name="id" value="" required> <br><br>
+
+          <label> Username: </label>
+          <input type="text" name="username" value="" required> <br><br>
+
+          <input type="submit" name="change_username" value="Update">
+
+        </form>
+
+        <?php
+          require("connect.php");
+
+          if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['change_username']))
+          {
+
+            $id = $_REQUEST["id"];
+            $username = $_REQUEST["username"];
+
+
+            $query = "SELECT * FROM student WHERE id = '{$id}'";
+            $result = mysqli_query($connection, $query);
+
+            if(mysqli_num_rows($result) == 1)
+            {
+              $query = "UPDATE student SET username = '{$username}' WHERE id = '{$id}'";
+              $result = mysqli_query($connection, $query);
+
+              if($result)
+              {
+                echo "<script> alert('Username changed successfully!'); window.location = 'admin-page.php'; </script>";
+              }
+              else
+              {
+                echo "<script> alert('Something went wrong!'); window.location = 'admin-page.php'; </script>";
+              }
+            }
+            else
+            {
+              echo "<script> alert('ID provided doesn't exist'); window.location = 'admin-page.php'; </script>";
+            }
+
+          }
+          mysqli_close($connection);
+        ?>
+
       </div>
 
       <!-- HOME SECTION  -->
