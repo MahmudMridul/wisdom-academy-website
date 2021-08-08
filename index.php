@@ -76,9 +76,8 @@
                   </a>
 
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Registration</a></li>
+                    <li><a class="dropdown-item" href="php/student-registration.php">Student Registration</a></li>
                     <li><a class="dropdown-item" href="php/student-login.php">Student Login</a></li>
-                    <li><a class="dropdown-item" href="#">Exam</a></li>
                   </ul>
                 </div>
 
@@ -124,7 +123,9 @@
               {
                   while($row = mysqli_fetch_assoc($result))
                   {
-                      echo "<img src=" . "'" . $row['directory']. "'"  ." class='images'>";
+                    $dir = $row['directory'];
+                    $directory = substr($dir, 3);
+                    echo "<img src=" . "'" . $directory . "'"  ." class='images'>";
                   }
               }
               else
@@ -154,8 +155,7 @@
                   while($row = mysqli_fetch_assoc($result))
                   {
                       $dir = $row['directory'];
-                      $directory = substr($dir, 4);
-                      echo "<img src = 'image/current_event/facebook.png' class = 'imgages'> ";
+                      $directory = substr($dir, 3);
                       echo "<img src=" . "'" . $directory . "'"  ." class='images'>";
                   }
               }
