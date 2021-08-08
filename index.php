@@ -72,7 +72,7 @@
                 <div class="dropdown">
                   <a class="nav-link dropdown-toggle nav-hov" href="#" role="button"
                   id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  Exam Site
+                  Student
                   </a>
 
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -110,7 +110,9 @@
         </div>
 
         <div class="current_event">
+          <hr>
           <h1>Current Events</h1>
+          <hr>
 
           <div class="current_event_grid">
             <?php
@@ -141,7 +143,9 @@
         </div>
 
         <div class="upcoming_event">
+          <hr>
           <h1>Upcoming Events</h1>
+          <hr>
 
           <div class="upcoming_event_grid">
             <?php

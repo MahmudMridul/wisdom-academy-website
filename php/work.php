@@ -71,11 +71,11 @@
               <div class="dropdown">
                 <a class="nav-link dropdown-toggle nav-hov" href="#" role="button"
                 id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                Exam Site
+                Student
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Student Registration</a></li>
+                  <li><a class="dropdown-item" href="student-registration.php">Student Registration</a></li>
                   <li><a class="dropdown-item" href="student-login.php">Student Login</a></li>
                 </ul>
               </div>
