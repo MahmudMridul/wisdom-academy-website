@@ -7,6 +7,10 @@
 body
 {
   margin: 0;
+  background-image: url('../image/icon/colors.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .mother
@@ -51,9 +55,13 @@ body
 .welcome-text
 {
   grid-row: 2 / 3;
-  font-size: 60px;
+  font-size: 70px;
+  padding-top: 130px;
   text-align: center;
   font-weight: 700;
+  background: #292F33;
+  color: #F0EAD6;
+  height: 500px;
 }
 
 .quote
@@ -62,6 +70,8 @@ body
   grid-row: 3 / 4;
   font-size: 20px;
   text-align: center;
+  height: 300px;
+  padding-top: 100px;
 }
 
 .current_event
