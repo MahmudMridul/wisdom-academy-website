@@ -186,6 +186,9 @@
         mysqli_close($connection);
         ?>
 
+        <hr>
+        <br><br><br>
+
         <!-- change name of the student  -->
         <h2>Name Correction</h2>
         <form class="" action="" method="post">
@@ -241,6 +244,8 @@
           }
           mysqli_close($connection);
         ?>
+
+        <hr>
 
         <br><br><br>
 
@@ -302,7 +307,7 @@
         <hr><hr>
 
           <!-- REMOVE CURRENT EVENT CONTENTS FORM  -->
-          <h2>Remove Cuurent Event</h2>
+          <h2>Remove Current Event</h2>
 
           <form class="" action="" method="post">
 
@@ -311,6 +316,9 @@
             <input type="submit" name="delete_current_event" value="Remove">
 
           </form>
+
+          <hr>
+          <br><br><br>
 
           <h2>Current Events</h2>
 
@@ -375,6 +383,9 @@
           mysqli_close($connection);
           ?>
 
+          <hr>
+          <br><br><br>
+
         <!-- UPLOAD CURRENT EVENT CONTENTS FORM  -->
           <h2>Upload Current Event</h2>
 
@@ -428,6 +439,8 @@
           }
           mysqli_close($connection);
           ?>
+          <hr>
+          <br><br><br>
 
           <!-- REMOVE UPCOMING EVENT CONTENTS FORM  -->
           <h2>Remove Upcoming Event</h2>
@@ -439,8 +452,11 @@
             <input type="submit" name="delete_upcoming_event" value="Remove">
 
           </form>
+          <hr>
+          <br><br><br>
 
           <h2>Upcoming Events</h2>
+
 
           <!-- SHOWING ALL UPCOMING EVNETS CURRENTLY IN DISPLAY PHP CODE  -->
           <?php
@@ -469,6 +485,8 @@
           }
           mysqli_close($connection);
           ?>
+
+
 
         <!-- REMOVE UPCOMING EVENT PHP CODE  -->
           <?php
@@ -502,6 +520,9 @@
           }
           mysqli_close($connection);
           ?>
+
+          <hr>
+          <br><br><br>
 
         <!-- UPLOAD UPCOMING EVENT CONTENTS FORM  -->
           <h2>Upload Upcoming Event</h2>
@@ -576,6 +597,9 @@
 
         </form>
 
+        <hr>
+        <br><br><br>
+
         <h2>News Contents</h2>
 
         <!-- SHOWING ALL NEWS CONTENTS CURRENTLY IN DISPLAY PHP CODE  -->
@@ -605,6 +629,9 @@
         }
         mysqli_close($connection);
         ?>
+
+        <hr>
+        <br><br><br>
 
       <!-- REMOVE NEWS CONTENTS PHP CODE  -->
         <?php
@@ -727,6 +754,10 @@
 
         </form>
 
+
+        <hr>
+        <br><br><br>
+
         <h2>Team Members</h2>
 
         <!-- SHOWING ALL TEAM MEMBER CURRENTLY IN DISPLAY PHP CODE  -->
@@ -756,6 +787,10 @@
         }
         mysqli_close($connection);
       ?>
+
+
+      <hr>
+      <br><br><br>
 
       <!-- REMOVE A TEAM MEMBER PHP CODE  -->
       <?php
@@ -872,6 +907,10 @@
 
         </form>
 
+
+        <hr>
+        <br><br><br>
+
         <h2>Work Contents</h2>
 
         <!-- SHOWING ALL WORK CONTENTS CURRENTLY IN DISPLAY PHP CODE  -->
@@ -901,6 +940,10 @@
         }
         mysqli_close($connection);
       ?>
+
+
+      <hr>
+      <br><br><br>
 
       <!-- REMOVE WORK CONTENTS PHP CODE  -->
       <?php
