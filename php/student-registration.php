@@ -199,7 +199,7 @@
 
     function validPassword($pwd)
     {
-      if (strlen($pwd) >= 8)
+      if (strlen($pwd) >= 8 && strlen($pwd) <= 20)
       {
         if (preg_match("#[0-9]+#", $pwd))
         {
@@ -221,7 +221,7 @@
       }
       else
       {
-        echo "<script> alert('Password must be at least 8 characters'); window.location = 'student-registration.php'; </script>";
+        echo "<script> alert('Password must be at least 8 characters and not more than 20'); window.location = 'student-registration.php'; </script>";
         return false;
       }
 
