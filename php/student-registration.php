@@ -209,19 +209,19 @@
           }
           else
           {
-            echo "<script> alert('Password must contain letters'); window.location = 'student-login.php'; </script>";
+            echo "<script> alert('Password must contain letters'); window.location = 'student-registration.php'; </script>";
             return false;
           }
         }
         else
         {
-          echo "<script> alert('Password must contain numbers'); window.location = 'student-login.php'; </script>";
+          echo "<script> alert('Password must contain numbers'); window.location = 'student-registration.php'; </script>";
           return false;
         }
       }
       else
       {
-        echo "<script> alert('Password must be at least 8 characters'); window.location = 'student-login.php'; </script>";
+        echo "<script> alert('Password must be at least 8 characters'); window.location = 'student-registration.php'; </script>";
         return false;
       }
 
