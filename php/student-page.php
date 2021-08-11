@@ -261,7 +261,7 @@
 
               if($result)
               {
-                echo "<script> alert('Username changed successfully!'); window.location = 'student-page.php'; </script>";
+                echo "<script> alert('Password changed successfully!'); window.location = 'student-page.php'; </script>";
               }
               else
               {
