@@ -7,8 +7,8 @@
 .my-container
 {
   display: grid;
-  grid-template: 1fr / repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 15px;
+  grid-template: 1fr / 1fr;
+  grid-gap: 100px;
   margin-top: 85px;
 }
 
@@ -29,4 +29,53 @@
   font-weight: 700;
   grid-column: 1 / -1;
   color: #F0EAD6;
+}
+
+.member
+{
+  display: grid;
+  grid-column: 1 / -1;
+  color: #F0EAD6;
+  grid-row-gap: 15px;
+}
+
+.name, .post
+{
+  font-size: 25px;
+  text-align: center;
+}
+
+.image_hold
+{
+  display: flex;
+  justify-content: center;
+}
+
+.link
+{
+  height: 50px;
+  width: 50px;
+}
+
+.social
+{
+  display: grid;
+  grid-template: 1fr / repeat(12, 1fr);
+}
+
+.fb
+{
+  grid-column: 5 / 6;
+}
+.insta
+{
+  grid-column: 6 / 7;
+}
+.linked
+{
+  grid-column: 7 / 8;
+}
+.mail
+{
+  grid-column: 8 / 9;
 }

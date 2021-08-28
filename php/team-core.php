@@ -96,24 +96,211 @@
     </nav>
 
     <div class="my-container">
-      <?php
-        require("connect.php");
 
-        $query = "SELECT * FROM team WHERE category = 'member_core'";
-        $result = mysqli_query($connection, $query);
+      <div class = 'core'> Core Members </div>
 
-        echo "<div class = 'core'> Core Members </div>";
+      <div class="member">
 
-        if(mysqli_num_rows($result) > 0)
-        {
-            while($row = mysqli_fetch_assoc($result))
-            {
-                echo "<img src=" . "'" . $row['directory']. "'"  ." class='images'>";
-            }
-        }
+        <div class="image_hold">
+          <img src="../image/panel/Md Akhlakul Islam Faim.png(CEO&Founder).png" class='images'>
+        </div>
 
-        mysqli_close($connection);
-      ?>
+        <div class="name">
+          Md Akhlakul Islam Faim
+        </div>
+
+        <div class="post">
+          CEO & Founder
+        </div>
+
+        <div class="social">
+
+          <a href="https://www.facebook.com/Akhlakul07" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://www.instagram.com/mdakhlakul07" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="https://www.linkedin.com/in/md-akhlakul-islam-faim-4310731b2" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: mdakhlakulislamfaim@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="member">
+
+        <div class="image_hold">
+          <img src="../image/panel/Pinak Pranto.jpg(Managing Director) .jpg" class='images'>
+        </div>
+
+        <div class="name">
+          Pinak Shadhu Khan
+        </div>
+
+        <div class="post">
+          Managing Director
+        </div>
+
+        <div class="social">
+
+          <a href="https://www.facebook.com/pinz.pinak.11" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://instagram.com/pinak_2_pranto?utm_medium=copy_link" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="https://www.linkedin.com/in/pinak-shadhu-khan-74a342159" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: pinakshadhukhan98@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+
+        </div>
+
+      </div>
+
+      <div class="member">
+
+        <div class="image_hold">
+          <img src="../image/panel/Mimosa Ahmed.png(Assistant Managing Director) .png" class='images'>
+        </div>
+
+        <div class="name">
+          Mimosa Ahmed
+        </div>
+
+        <div class="post">
+          Assistant Managing Director
+        </div>
+
+        <div class="social">
+
+          <a href="https://www.facebook.com/mimosa.ahmed.54" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://instagram.com/mimosa_ahmed0?utm_medium=copy_link" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="https://www.linkedin.com/in/mimosa-ahmed-078a1b207" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: mimosaahmed0@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="member">
+
+        <div class="image_hold">
+          <img src="../image/panel/Abhi Bose.jpg(Content Creator).jpg" class='images'>
+        </div>
+
+        <div class="name">
+          Abhi Bose
+        </div>
+
+        <div class="post">
+          Content Creator
+        </div>
+
+        <div class="social">
+
+          <a href="https://www.facebook.com/abhibose.official" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://instagram.com/abhiboseofficial74?utm_medium=copy_link" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="https://www.linkedin.com/in/abhi-bose-49b8a3216" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: ovibose576@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="member">
+
+        <div class="image_hold">
+          <img src="../image/panel/Jannatul Ferdous.jpg(Operation Incharge) .jpg" class='images'>
+        </div>
+
+        <div class="name">
+          Jannatul Ferdous
+        </div>
+
+        <div class="post">
+          Operation Incharge
+        </div>
+
+        <div class="social">
+
+          <a href="https://www.facebook.com/profile.php?id=100056361606974" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://instagram.com/jannatulll___?utm_medium=copy_link" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: janxatull.62@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="member">
+
+        <div class="image_hold">
+          <img src="../image/panel/Halima Meem.jpg(HR Manager).jpg" class='images'>
+        </div>
+
+        <div class="name">
+          Halima Khatun Meem
+        </div>
+
+        <div class="post">
+          HR Manager
+        </div>
+
+        <div class="social">
+
+          <a href="https://www.facebook.com/halima.meem.210102" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://instagram.com/s_n_o_w_y_3?utm_medium=copy_link" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: meemhalima01@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="member">
+
+        <div class="image_hold">
+          <img src="../image/panel/Sheikh Sadia Hossain.jpg(Public Relation Officer) .jpg" class='images'>
+        </div>
+
+        <div class="name">
+          Sheikh Sadia Hossain
+        </div>
+
+        <div class="post">
+          Public Relation Officer
+        </div>
+
+        <div class="social">
+          <a href="https://www.facebook.com/profile.php?id=100011496075361" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://instagram.com/sheikh_sadia_hossain?utm_medium=copy_link" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: sksadiahossain55@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+        </div>
+
+      </div>
+
+
+      <div class="member">
+
+        <div class="image_hold">
+          <img src="../image/panel/Pranty Chowdhury (Business Development Officer).jpg" class='images'>
+        </div>
+
+        <div class="name">
+          Pranty Chowdhury
+        </div>
+
+        <div class="post">
+          Business Development Officer
+        </div>
+
+        <div class="social">
+          <a href="https://www.facebook.com/pranty.chowdhury.94" target="_blank" class="fb"> <img src="../image/icon/facebook.png" class="link" > </a>
+          <a href="https://www.instagram.com/pranty__.chy.__30/" target="_blank" class="insta" > <img src="../image/icon/instagram.png" class="link" > </a>
+          <a href="https://www.linkedin.com/in/pranty-chowdhury-a32503217" target="_blank" class="linked"> <img src="../image/icon/linkedin.png" class="link" > </a>
+          <a href="mailto: pranty.chy01@gmail.com" target="_blank" class="mail"> <img src="../image/icon/email.png" class="link" > </a>
+        </div>
+
+      </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
