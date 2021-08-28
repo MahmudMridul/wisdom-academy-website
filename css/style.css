@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 *
 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 body
@@ -11,6 +11,16 @@ body
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+
+h1
+{
+  color: #F0EAD6;
+}
+
+p
+{
+  color: #F3E0BE;
 }
 
 .mother

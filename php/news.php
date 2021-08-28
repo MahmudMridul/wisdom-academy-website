@@ -103,7 +103,7 @@
         $query = "SELECT directory FROM news";
         $result = mysqli_query($connection, $query);
 
-        echo "<div class = 'work'> News </div>";
+        echo "<div class = 'news'> News </div>";
 
         if(mysqli_num_rows($result) > 0)
         {
